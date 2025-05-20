@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Tambah Produk') }}
+            {{ __('Edit Produk') }}
         </h2>
     </x-slot>
 
@@ -9,22 +9,26 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{ route('produk.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('produk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div>
                                 <div class="mb-4">
-                                    <x-input-label for="nama_produk" :value="__('Nama Produk :')" />
-                                    <x-text-input id="nama_produk" class="block mt-1 w-full" type="text" name="nama_produk" :value="old('nama_produk')" required autofocus />
-                                </div>
+                                <x-input-label for="nama_produk" :value="__('Nama Produk :')" />
+                                <x-text-input id="nama_produk" class="block mt-1 w-full" type="text" name="nama_produk" value="{{ old('nama_produk', $produk->nama_produk) }}" required autofocus />
+                                @error('nama_produk')
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
+                            </div>
 
                                 <div class="mb-4">
                                     <x-input-label for="harga" :value="__('Harga :')" />
-                                    <x-text-input id="harga" class="block mt-1 w-full" type="number" step="0.01" name="harga" :value="old('harga')" required autofocus />
+                                    <x-text-input id="harga" class="block mt-1 w-full" type="number" step="0.01" name="harga" value="{{ old('harga', $produk->harga) }}" required autofocus />
                                 </div>
 
                                 <div class="mb-4">
                                     <x-input-label for="stok" :value="__('Stok :')" />
-                                    <x-text-input id="stok" class="block mt-1 w-full" type="number  " name="stok" :value="old('stok')" required autofocus />
+                                    <x-text-input id="stok" class="block mt-1 w-full" type="number  " name="stok" value="{{ old('stok', $produk->stok) }}" required autofocus />
                                 </div>
 
                                 <div class="relative mb-4">
@@ -42,7 +46,7 @@
                                     </div>
                                     
                                     
-                                    <x-text-input id="gambarInput" class="block w-full pl-3 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm file:bg-gray-100 file:border-0 file:py-1 file:px-3 file:mr-4 file:rounded file:text-gray-700" type="file" name="gambar" :value="old('gambar')" required autofocus /> 
+                                    <x-text-input id="gambarInput" class="block w-full pl-3 pr-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 text-sm file:bg-gray-100 file:border-0 file:py-1 file:px-3 file:mr-4 file:rounded file:text-gray-700" type="file" name="gambar" value="{{ old('gambar', $produk->gambar) }}" autofocus /> 
                                     
                                     <small class="text-red-600">*Format file gambar : jpg, jpeg, png</small>
                                 </div>
@@ -59,6 +63,5 @@
             </div>
         </div>
     </div>
-
 
 </x-app-layout>

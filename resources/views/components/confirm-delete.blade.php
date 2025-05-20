@@ -1,5 +1,5 @@
 <div id="deleteModal" tabindex="-1" aria-hidden="true"
-    class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 flex justify-center items-center h-full bg-gray-800 bg-opacity-50">
+    class="hidden overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center h-full bg-gray-800 bg-opacity-50">
     <div class="relative p-4 w-full max-w-md h-auto bg-white rounded-lg shadow sm:p-5">
         <button type="button"
             class="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
