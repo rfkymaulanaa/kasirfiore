@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PembelianController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StokController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -23,6 +25,13 @@ Route::put('produk/{produk}', [ProdukController::class, 'update'])->name('produk
 Route::post('produk', [ProdukController::class, 'store'])->name('produk.store');
 Route::delete('produk/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
 Route::get('search', [ProdukController::class, 'search'])->name('produk.search');
+
+Route::get('/stok', [StokController::class, 'index'])->name('stok');
+Route::get('/stok/{stok}/edit', [StokController::class, 'edit'])->name('stok.edit');
+Route::put('/stok/{stok}', [StokController::class, 'update'])->name('stok.update');
+
+
+Route::get('/pembelian', [PembelianController::class, 'index'])->name('pembelian');
 
 
 Route::middleware('auth')->group(function () {

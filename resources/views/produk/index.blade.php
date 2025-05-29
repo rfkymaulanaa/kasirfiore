@@ -34,8 +34,8 @@
                             Tambah Produk  
                         </a>
                     </div>
-                    <table class="w-full my-6 text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 0 dark:text-gray-400">
+                    <table class="w-full my-6 text-sm text-left text-gray-500 ">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                             <tr>
                                 <th scope="col" class="px-6 py-3">
                                     Nama Produk
@@ -46,15 +46,12 @@
                                 <th scope="col" class="px-6 py-3">
                                     Stok
                                 </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Aksi
-                                </th>
                             </tr>                               
                         </thead>
                         <tbody>
                             @forelse ($produk as $item)
                                 <tr
-                                    class="odd:bg-white  even:bg-gray-50  border-gray-200 text-gray-900 font-medium">
+                                    class="odd:bg-white even:bg-gray-50  border-gray-200 text-gray-900 font-medium ">
                                     <th scope="row"
                                         class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
                                         {{ $item->nama_produk }}
@@ -65,7 +62,7 @@
                                     <td scope="row" class="px-6 py-4">
                                         {{ $item->stok }}
                                     </td>
-                                    <td scope="row" class=" px-6 py-4">
+                                    <td scope="row" class=" flex items-center justify-end">
                                         <form action="{{ route('produk.destroy', $item) }}" method="post" class="flex items-center gap-2">
                                             <a href="{{ route('produk.edit', $item) }}"
                                                 class="hover:underline">
