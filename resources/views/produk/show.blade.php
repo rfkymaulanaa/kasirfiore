@@ -1,13 +1,13 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800  leading-tight">
             {{ __('Detail Produk') }}
         </h2>
     </x-slot>
 
     <section class=" p-5">
         <div class="mx-auto max-w-screen-lg px-6 lg:px-12">
-            <div class="bg-gray-50 shadow-md sm:rounded-lg overflow-hidden p-6">
+            <div class="bg-white shadow-md sm:rounded-lg overflow-hidden p-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                     <div>
                         <div class="mb-4">
@@ -29,7 +29,7 @@
                             <label for="stok"
                                 class="block mb-2 text-sm font-medium text-gray-900 ">Stok</label>
                             <input type="text" name="stok" value="{{ $produk->stok ?? '' }}"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5  "
                                 readonly>
                         </div>
                     </div>
@@ -43,6 +43,4 @@
             </div>
         </div>
     </section>
-
-
 </x-app-layout>

@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
 
+    <x-confirm-delete />
+    
     <section class="p-3 sm:p-5">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
             @if (session('success'))
@@ -110,8 +112,8 @@
                                                     d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                             </svg>
                                         </a>
-                                        <button type="button" onclick="openModalDelete({{ json_encode($item->id), 'user'}})">
-                                            <svg
+                                        <button type="button"
+                                            onclick="openDeleteModal({{ json_encode($item->id) }}, 'user')"><svg
                                                 class="w-6 h-6 text-red-600 dark:text-red-500" aria-hidden="true"
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                                                 viewBox="0 0 24 24">

@@ -84,7 +84,7 @@
                                 </svg>
                                 <p class="mt-4 text-lg font-semibold text-gray-900 ">Keranjang Anda Kosong
                                 </p>
-                                <a href="{{ route('pembelian') }}"
+                                <a href="{{ route('pembelian.index') }}"
                                     class="mt-2 text-sm text-blue-600 hover:underline">Lanjutkan
                                     belanja</a>
                             </div>
@@ -115,7 +115,7 @@
                                             ke Pembayaran</a>
                                         <div class="flex items-center justify-center gap-2">
                                             <span class="text-sm font-normal text-gray-500 dark:text-gray-400"> atau </span>
-                                            <a href="/pembelian" title=""
+                                            <a href="{{ route('pembelian.index') }}" title=""
                                                 class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
                                                 Lanjutkan Belanja
                                                 <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"

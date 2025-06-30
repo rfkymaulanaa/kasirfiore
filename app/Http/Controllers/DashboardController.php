@@ -6,7 +6,10 @@ use Carbon\Carbon;
 use App\Models\Pelanggan;
 use App\Models\Penjualan;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\LaporanPenjualanExport;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class DashboardController extends Controller
@@ -60,17 +63,37 @@ class DashboardController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function exportExcel(Request $request)
     {
-        //
+        $startDateRaw = $request->input('start_date');
+        $endDateRaw = $request->input('end_date');
+
+        $startDate = $startDateRaw ? Carbon::createFromFormat('m/d/Y', $startDateRaw)->format('Y-m-d') : null;
+        $endDate = $endDateRaw ? Carbon::createFromFormat('m/d/Y', $endDateRaw)->format('Y-m-d') : null;
+
+        return Excel::download(new LaporanPenjualanExport($startDate, $endDate), 'laporan_penjualan.xlsx');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function exportPDF(Request $request)
     {
-        //
+        $startDateRaw = $request->input('start_date');
+        $endDateRaw = $request->input('end_date');
+
+        $startDate = $startDateRaw ? Carbon::createFromFormat('m/d/Y', $startDateRaw)->format('Y-m-d') : null;
+        $endDate = $endDateRaw ? Carbon::createFromFormat('m/d/Y', $endDateRaw)->format('Y-m-d') : null;
+
+        $data = Penjualan::with(['pelanggan', 'detailPenjualan.produk'])
+            ->when($startDate, function ($query) use ($startDate, $endDate) {
+                $query->whereBetween('tanggal_penjualan', [$startDate, $endDate]);
+            })
+            ->orderBy('tanggal_penjualan', 'desc')
+            ->get();
+
+        $pdf = Pdf::loadView('exports.laporan_pdf', compact('data', 'startDate', 'endDate'));
+        return $pdf->download('laporan_penjualan.pdf');
     }
 
     /**

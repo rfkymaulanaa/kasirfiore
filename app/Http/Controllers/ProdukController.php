@@ -11,7 +11,6 @@ class ProdukController extends Controller
     //
     public function index()
     {
-        $produk = Produk::all();
         $produk = Produk::paginate(5);
         return view('produk.index', compact('produk'));
     }
@@ -38,7 +37,7 @@ class ProdukController extends Controller
         $produk = Produk::create($validateData);
 
 
-        return redirect()->route('produk')->with('success', 'Produk berhasil ditambahkan');
+        return redirect()->route('produk.index')->with('success', 'Produk berhasil ditambahkan');
     }
 
         public function show(Produk $produk)
@@ -71,18 +70,18 @@ class ProdukController extends Controller
 
         $produk->update($validateData);
 
-        return redirect()->route('produk')->with('success', 'Produk berhasil diupdate');
+        return redirect()->route('produk.index')->with('success', 'Produk berhasil diupdate');
     }
 
 
 
     public function destroy(Produk $produk)
     {
-        if ($produk->gambar) {
-            Storage::disk('public')->delete($produk->gambar);
-        }
+        // if ($produk->gambar) {
+        //     Storage::disk('public')->delete($produk->gambar);
+        // }
         $produk->delete();
-        return redirect()->route('produk')->with('success', 'Produk berhasil dihapus');
+        return redirect()->route('produk.index')->with('success', 'Produk berhasil dihapus');
     }
 
     public function search(Request $request)

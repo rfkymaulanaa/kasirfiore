@@ -44,13 +44,13 @@
                 <tbody>
                     @foreach ($penjualan->detailPenjualan as $detail)
                                         @php
-                                            $hargaSatuan = $detail->jumlah_produk > 0 ? ($detail->subtotal / $detail->jumlah_produk) : 0;
+                                            $hargaSatuan = $detail->jumlah > 0 ? ($detail->subtotal / $detail->jumlah) : 0;
                                         @endphp
                                         <tr>
                                             <td class="text-left">
                                                 {{ $detail->produk?->nama_produk ?? $detail->nama_produk . " (Tidak tersedia)" }}
                                             </td>
-                                            <td class="text-right">{{ $detail->jumlah_produk }}</td>
+                                            <td class="text-right">{{ $detail->jumlah }}</td>
                                             <td class="text-right text-nowrap">
                                                 Rp.{{ number_format($hargaSatuan, 2, ',', '.') }}
                                             </td>

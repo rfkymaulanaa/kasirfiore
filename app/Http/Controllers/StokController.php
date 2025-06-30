@@ -62,7 +62,7 @@ class StokController extends Controller
             'stok' => $stok->stok + $request->tambah_stok
         ]);
 
-        return redirect()->route('stok')->with('success', 'Stok berhasil ditambahkan');
+        return redirect()->route('stok.index')->with('success', 'Stok berhasil ditambahkan');
     }
 
     /**
