@@ -49,7 +49,7 @@
                     <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
 
                         <a href="{{ route('export.excel', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}"
-                            class="bg-green-500 hover:bg-green-600 text-white font-semibold px-5 py-2 rounded-lg transition shadow-md text-center w-full sm:w-auto">
+                            class="bg-green-700 hover:bg-green-800 text-white font-semibold px-5 py-2 rounded-lg transition shadow-md text-center w-full sm:w-auto">
                             Export Excel
                         </a>
                         
@@ -68,7 +68,7 @@
                         </p>
                     </div>
                     <div class="p-6 bg-gray-50 shadow-md rounded-lg text-center">
-                        <h3 class="text-lg font-semibold text-gray-700">Total Pelanggan</h3>
+                        <h3 class="text-lg font-semibold text-gray-700">Total Member</h3>
                         <p class="text-3xl font-bold text-yellow-600 ">
                             {{ $totalPelanggan }}
                         </p>
