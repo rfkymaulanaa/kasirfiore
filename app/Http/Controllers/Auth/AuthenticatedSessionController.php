@@ -30,9 +30,9 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
         if ($user->role === 'admin') {
-            return redirect()->route('dashboard');
+            return redirect()->route('dashboard')->with('login_success', 'Selamat datang di Fiore!');
         } elseif ($user->role === 'petugas') {
-            return redirect()->route('pembelian.index');
+            return redirect()->route('pembelian.index')->with('login_success', 'Selamat datang di Fiore!');
         }
 
         return redirect('/');

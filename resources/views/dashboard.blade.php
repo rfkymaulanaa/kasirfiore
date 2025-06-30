@@ -155,5 +155,14 @@
                 maintainAspectRatio: false,
             }
         });
+        
+        @if (session('login_success'))
+            Swal.fire({
+                title: 'Login Berhasil!',
+                text: '{{ session('login_success') }}',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        @endif
     });
 </script>

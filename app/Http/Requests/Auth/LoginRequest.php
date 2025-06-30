@@ -32,6 +32,24 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'email.required' => 'Email harus diisi.',
+            'email.email' => 'Email harus berupa alamat email yang valid.',
+            'password.required' => 'Password harus diisi.',
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'email' => 'alamat email',
+            'password' => 'kata sandi',
+        ];
+    }
+
+
     /**
      * Attempt to authenticate the request's credentials.
      *
@@ -45,7 +63,7 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => 'Data tidak valid. Periksa kembali email dan password Anda.',
             ]);
         }
 
@@ -80,6 +98,6 @@ class LoginRequest extends FormRequest
      */
     public function throttleKey(): string
     {
-        return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+        return Str::transliterate(Str::lower($this->input('email')).'|'.$this->ip());
     }
 }
