@@ -31,7 +31,7 @@
                                             <button type="button"
                                                 class="decrement-button inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border-2 border-pink-300 bg-gradient-to-r from-pink-400 to-rose-400 text-white hover:from-pink-500 hover:to-rose-500 focus:outline-none focus:ring-2 focus:ring-pink-300 transition-all duration-200 transform hover:scale-105"
                                                 data-produk-id="{{ $item['produk_id'] }}">
-                                                <svg class="h-3 w-3 text-gray-900 "
+                                                <svg class="h-3 w-3  "
                                                     xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                                                     <path stroke="currentColor" stroke-linecap="round"
                                                         stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
@@ -52,7 +52,7 @@
                                         <div class="text-end md:order-4 md:w-36 ml-4">
                                                 <p class="text-sm text-gray-800 mb-1">Subtotal</p>
                                                 <p class="text-xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-                                                    Rp <span id="harga-{{ $item['produk_id'] }}">{{ number_format($item['harga'] * $item['quantity'], 0, ',', '.') }}</span>
+                                                    Rp <span id="harga-{{ $item['produk_id'] }}"> {{ number_format($item['harga'] * $item['quantity'], 2, ',' , '.') }}</span>
                                                 </p>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
 
                                         <div class="flex items-center space-x-4">
                                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-pink-400 to-rose-400 text-white">
-                                                    💰 Rp {{ number_format($item['harga'], 0, ',', '.') }} /item
+                                                    💰 Rp {{ number_format($item['harga'], 0, ',' , '.') }} /item
                                                 </span>
                                                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-blue-400 to-indigo-400 text-white">
                                                     📦 Stok: {{ $item['stok'] }}
@@ -111,7 +111,7 @@
                     @endphp
                     <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full lg:max-w-sm">
                         <div class="sticky top-6 space-y-4 rounded-2xl border-2 border-pink-200 bg-white/80 backdrop-blur-sm p-6 shadow-lg">
-                                 <div class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm  sm:p-6">
+                                <div class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm  sm:p-6">
                                         <p class="text-xl font-semibold text-gray-900 ">Ringkasan Pesanan</p>
                                         <div class="space-y-4">
                                             <dl

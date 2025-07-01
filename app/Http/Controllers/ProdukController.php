@@ -63,7 +63,8 @@ class ProdukController extends Controller
             if ($produk->gambar) {
                 Storage::disk('public')->delete($produk->gambar);
             }
-            $validateData['gambar'] = $request->file('gambar')->store('produk-images', 'public');
+            $filePath = $request->file('gambar')->store('produk-images', 'public');
+            $validateData['gambar'] = basename($filePath);
         } else {
             $validateData['gambar'] = $produk->gambar;
         }

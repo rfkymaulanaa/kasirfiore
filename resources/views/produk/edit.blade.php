@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <section class=" p-3 sm:p-5">
+    <section class=" p-3 sm:p-5 min-h-screen flex items-center justify-center">
         <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
             <div class="bg-white relative shadow-lg sm:rounded-lg overflow-hidden border border-pink-100">
                 <div
