@@ -39,7 +39,7 @@
                     class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
                     <div class="w-full md:w-1/2">
                         <form action="{{ route('produk.search') }}" method="GET" class="flex items-center">
-                            <label for="simple-search" class="sr-only">Search</label>
+                            <label for="simple-search" class="sr-only">Cari Produk</label>
                             <div class="relative w-full">
                                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                                     <svg aria-hidden="true" class="w-5 h-5 text-rose-500 "
@@ -51,7 +51,7 @@
                                 </div>
                                 <input type="text" id="search" name="search"
                                     class="bg-gray-50 border border-red-300 text-gray-900 text-sm rounded-lg focus:border-pink-500 focus:ring-pink-200 block w-full pl-10 p-2 "
-                                    placeholder="Search" value="{{ request('search') }}">
+                                    placeholder="Cari Produk" value="{{ request('search') }}">
                             </div>
                         </form>
                     </div>
