@@ -41,6 +41,13 @@
                                     class="bg-pink-50 border border-pink-200 text-pink-900 text-sm rounded-lg focus:ring-pink-500 focus:border-pink-500 block w-full p-3 transition-all duration-200 hover:border-pink-300"
                                     readonly>
                             </div>
+
+                            <a href="{{ route('user.index') }}" 
+                                class="mb-2 mt-4 inline-flex items-center px-6 py-3 text-sm font-medium text-pink-600 bg-pink-100 border border-pink-200 rounded-lg hover:bg-pink-200 focus:ring-4 focus:ring-pink-200 transition-all duration-200">
+                                <i class="fas fa-arrow-left mr-2"></i>
+                                Kembali
+                            </a>
+                            
                         </div>
                     </div>
                 </div>

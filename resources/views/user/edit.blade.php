@@ -86,6 +86,12 @@
                                     class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gradient-to-r from-pink-500 to-pink-600 rounded-lg hover:from-pink-600 hover:to-pink-700 focus:ring-4 focus:ring-pink-200 transition-all duration-200 shadow-md hover:shadow-lg">
                                 <i class="fas fa-save mr-2"></i>{{ isset($user) ? 'Simpan Perubahan' : 'Simpan User' }}
                                 </button>
+
+                                <a href="{{ route('user.index') }}" 
+                                class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-pink-600 bg-pink-100 border border-pink-200 rounded-lg hover:bg-pink-200 focus:ring-4 focus:ring-pink-200 transition-all duration-200">
+                                <i class="fas fa-arrow-left mr-2"></i>
+                                Kembali
+                            </a>
                             </div>
                         </form>
                     </div>
