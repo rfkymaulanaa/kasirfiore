@@ -15,7 +15,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-            <style>
+        <style>
             .gradient-bg {
                 background: linear-gradient(135deg, #ec4899 0%, #f472b6 25%, #f9a8d4 50%, #fcd2e9 100%);
             }
