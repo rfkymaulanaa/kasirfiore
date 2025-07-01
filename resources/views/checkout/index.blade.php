@@ -1,23 +1,27 @@
 <x-app-layout>
         <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-pink-800 leading-tight">
             {{ __('Checkout') }}
         </h2>
     </x-slot>
 
-    <section class="p-5">
-        <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
-            <form action="{{ route('checkout.store') }}" method="POST">
+    <section class="py-8">
+        <div class="mx-auto max-w-7xl px-4 lg:px-8">
+            <form action="{{ route('checkout.store') }}" method="POST" class="space-y-8">
                 @csrf
-                <div class="grid lg:grid-cols-2 gap-10">
-                    <div class="space-y-6">
-                        <p class="text-2xl font-semibold text-center">Daftar Barang</p>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div class="space-y-6 animate-fade-in">
+                        <div class="text-center">
+                            <h2 class="text-2xl font-bold text-pink-800 mb-2">Daftar Barang</h2>
+                            <div class="w-20 h-1 bg-gradient-to-r from-pink-400 to-pink-600 mx-auto rounded-full"></div>
+                        </div>
                         <div class="space-y-4 rounded-lg border bg-white p-5 ">
                             @foreach ($cart as $item )
-                            <div class="flex items-center justify-between p-4 border-b">
+                            <div class="flex items-center justify-between p-4 border-b border-pink-100 last:border-b-0">
+                                <div class="relative">
                                 <div class="flex items-center space-x-4">
                                     @if (!empty($item['gambar']))
-                                        <img class="h-24 w-28 rounded-md border object-cover"
+                                        <img class="h-20 w-24 rounded-xl border-2 border-pink-200 object-cover shadow-md"
                                         src="{{ asset('storage/produk-images/' . $item['gambar']) }}" alt="{{ $item['nama_produk'] }}">
                                     @else
                                         <img class="h-24 w-28 rounded-md border object-cover"
@@ -26,9 +30,12 @@
                                     <div class="flex flex-col flex-grow">
                                         <span class="font-semibold text-gray-800"> {{ $item['nama_produk'] }} </span>
                                         <span class="text-gray-500"> {{ $item['quantity'] }} x {{ number_format ($item['harga'], 2, ',', '.') }}</span>
-                                        <p class="font-semibold text-gray-800">Subtotal :
+                                        <div class="mt-2 flex items-center">
+                                        <span class="text-sm text-gray-600 mr-2">Subtotal :
                                             {{ number_format($item['harga'] * $item['quantity'], 2, ',', '.')  }}
-                                        </p>
+                                        </span>
+                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -40,55 +47,60 @@
                     </div>
 
                     <div class="space-y-6 ">
-                        <p class="text-2xl font-semibold text-center">Identitas Pelanggan</p>
+                        <h2 class="text-2xl font-bold text-center text-pink-800">Identitas Pelanggan</h2>
+                        <div class="w-20 h-1 bg-gradient-to-r from-pink-400 to-pink-600 mx-auto rounded-full"></div>
                         
                         <!-- Single Box for All Form Elements -->
                         <div class="space-y-6 bg-white p-6 rounded-lg shadow-md">
                             <div>
-                                <label for="" class="block text-sm font-medium text-gray-700">
+                                <label for="" class="block text-sm font-semibold text-pink-800 mb-3">
                                     Jenis Pelanggan
                                 </label>
-                                <div class=" flex space-x-4 mt-2">
-                                    <label class="flex items-center">
-                                        <input type="radio" name="jenis_pelanggan" value="bukan_member" checked onclick="togglePelangganForm()">
-                                        <span class="ml-2">Bukan Member</span>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                    <label class="flex items-center p-3 border-2 border-pink-200 rounded-xl cursor-pointer hover:border-pink-400 hover:bg-pink-50 transition-all">
+                                        <input type="radio" name="jenis_pelanggan" class="radio-pink mr-3" value="bukan_member" class="radio-pink mr-3" checked onclick="togglePelangganForm()">
+                                        <span class="font-medium text-gray-700">Bukan Member</span>
                                     </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="jenis_pelanggan" value="member_baru" onclick="togglePelangganForm()">
-                                        <span class="ml-2">Member Baru</span>
+                                    <label class="flex items-center p-3 border-2 border-pink-200 rounded-xl cursor-pointer hover:border-pink-400 hover:bg-pink-50 transition-all">
+                                        <input type="radio" name="jenis_pelanggan" class="radio-pink mr-3" value="member_baru" onclick="togglePelangganForm()">
+                                        <span class="font-medium text-gray-700">Member Baru</span>
                                     </label>
-                                    <label class="flex items-center">
-                                        <input type="radio" name="jenis_pelanggan" value="member" onclick="togglePelangganForm()">
-                                        <span class="ml-2">Member</span>
+                                    <label class="flex items-center p-3 border-2 border-pink-200 rounded-xl cursor-pointer hover:border-pink-400 hover:bg-pink-50 transition-all">
+                                        <input type="radio" name="jenis_pelanggan" class="radio-pink mr-3" value="member" onclick="togglePelangganForm()">
+                                        <span class="font-medium text-gray-700">Member</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div id="cari_member">
-                                <label for="nama_member" class="block text-sm font-medium text-gray-700">Cari member </label>
-                                <input type="text" id="nama_member" name="nama_member" class="w-full rounded-md border-gray-300 px-4 py-3 text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-700" placeholder="Masukkan nama pelanggan" oninput="cekMember()">
-                                <ul id="daftar_member" class="border rounded-md mt-2 bg-white shadow-md hidden"></ul>
-                                <p id="status_member" class="text-sm mt-2"></p>
+                                <label for="nama_member" class="block text-sm font-semibold text-pink-800 mb-2">Cari member </label>
+                                <div class="relative">
+                                <input type="text" id="nama_member" name="nama_member" 
+                                class="w-full rounded-xl border-2 border-pink-200 px-4 py-3 text-sm shadow-sm input-focus transition-all" 
+                                placeholder="Masukkan nama pelanggan" oninput="cekMember()">
+                                <ul id="daftar_member" class="border-2 border-pink-200 rounded-xl mt-2 bg-white shadow-lg hidden max-h-40 overflow-y-auto"></ul>
+                                <p id="status_member" class="text-sm mt-2 text-pink-600 font-medium"></p>
+                                </div>
                             </div>
 
-                            <div id="form_pelanggan" class="hidden">
+                            <div id="form_pelanggan" class="hidden space-y-4">
                                 <div>
-                                    <label for="nama_pelanggan" class="block text-sm font-medium text-gray-700">Nama Pelanggan </label>
-                                    <input type="text" name="nama_pelanggan" id="nama_pelanggan" class="w-full rounded-md border-gray-300 px-4 py-3 text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-700" placeholder="Masukkan nama anda">
+                                    <label for="nama_pelanggan" class="block text-sm font-semibold text-pink-800 mb-2">Nama Pelanggan </label>
+                                    <input type="text" name="nama_pelanggan" id="nama_pelanggan" class="w-full rounded-xl border-2 border-pink-200 px-4 py-3 text-sm shadow-sm input-focus transition-all"  placeholder="Masukkan nama anda">
                                 </div>
                                 <div>
-                                    <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
-                                    <textarea name="alamat" id="alamat" cols="30" rows="3" class="w-full rounded-md border-gray-300 px-4 py-3 text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500"></textarea>
+                                    <label for="alamat" class="block text-sm font-semibold text-pink-800 mb-2">Alamat</label>
+                                    <textarea name="alamat" id="alamat" cols="30" rows="3" class="w-full rounded-xl border-2 border-pink-200 px-4 py-3 text-sm shadow-sm input-focus transition-all"></textarea>
                                 </div>
                                 <div>
-                                    <label for="nomor_telepon" class="block text-sm font-medium text-gray-700">Nomor Telepon </label>
-                                    <input type="number" name="nomor_telepon" id="nomor_telepon" class="w-full rounded-md border-gray-300 px-4 py-3 text-sm shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-700" placeholder="08xxxxxxxxxx" >
+                                    <label for="nomor_telepon" class="block text-sm font-semibold text-pink-800 mb-2">Nomor Telepon </label>
+                                    <input type="number" name="nomor_telepon" id="nomor_telepon" class="w-full rounded-xl border-2 border-pink-200 px-4 py-3 text-sm shadow-sm input-focus transition-all"  placeholder="08xxxxxxxxxx" >
                                 </div>
                             </div>
                             
                             <div id="nominal_bayar_wrapper">
-                                <label for="nominal_bayar" class="block text-sm font-medium text-gray-700">Nominal Bayar</label>
-                                <input type="number" name="nominal_bayar" id="nominal_bayar" class="w-full rounded-md border-gray-300 px-4 py-3 text-md shadow-sm focus:ring-blue-500 focus:border-blue-500 placeholder-gray-700" placeholder="Masukkan jumlah uang yang dibayarkan">
+                                <label for="nominal_bayar" class="block text-sm font-semibold text-pink-800 mb-2">Nominal Bayar</label>
+                                <input type="number" name="nominal_bayar" id="nominal_bayar" class="w-full rounded-xl border-2 border-pink-200 px-4 py-3 text-sm shadow-sm input-focus transition-all"  placeholder="Masukkan jumlah uang yang dibayarkan">
                                 @error('nominal_bayar')
                                     <p class="mt-2 text-sm text-red-600">
                                         {{ $message }}
@@ -126,7 +138,7 @@
                 
                 <!-- Button moved outside grid and properly positioned -->
                 <div class="flex justify-end mt-6">
-                    <button type="submit" class="w-full md:w-auto bg-blue-600 text-white rounded-md py-2 px-6 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="group relative px-8 py-4 bg-gradient-to-r from-pink-500 via-pink-600 to-pink-700 text-white font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-pink-300">
                         Bayar Sekarang
                     </button>
                 </div>

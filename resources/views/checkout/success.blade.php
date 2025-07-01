@@ -86,9 +86,9 @@
     <div class="text-center mt-4">
         @if (auth()->user()->role === 'petugas')
             <button onclick="printStruk()"
-                class="inline-block bg-gray-700 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-800">Cetak</button>
+                class="inline-block bg-green-700 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-800">Cetak</button>
             <a href="{{ route('pembelian.index') }}"
-                class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700">Kembali</a>
+                class="inline-block bg-gray-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-gray-700">Kembali</a>
         @else
             <a href="{{ route('dashboard') }}"
                 class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700">Kembali</a>
