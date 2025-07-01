@@ -3,3 +3,16 @@
 @tailwind utilities;
 
 
+nav a.border-indigo-500,
+nav a.border-blue-500,
+nav a.border-indigo-400,
+nav a.border-blue-400 {
+    border-color: #ec4899 !important; /* pink-500 */
+}
+
+nav a.text-indigo-600,
+nav a.text-blue-600,
+nav a.text-indigo-500,
+nav a.text-blue-500 {
+    color: #db2777 !important; /* pink-600 */
+}
