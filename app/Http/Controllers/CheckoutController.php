@@ -145,7 +145,7 @@ public function store(Request $request)
         $kasir = Penjualan::with('petugas')->findOrFail($id);
         $penjualan = Penjualan::with(['pelanggan', 'DetailPenjualan.produk'])->findOrFail($id);
         return view('checkout.success', compact('penjualan', 'kasir'));
-    }
+    } 
 
     /**
      * Show the form for editing the specified resource.
